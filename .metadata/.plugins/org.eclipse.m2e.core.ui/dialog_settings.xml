@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="F:\Event Booking Final\Event-Booking-Java\Event Booking Java\Service"/>
+			<item value="F:\Event Booking Final\Event-Booking-Java\Event Booking Java\Registration"/>
+			<item value="F:\Event Booking Final\Event-Booking-Java\Event Booking Java\Post"/>
+			<item value="F:\Event Booking Final\Event-Booking-Java\Event Booking Java\Image"/>
+			<item value="F:\Event Booking Final\Event-Booking-Java\Event Booking Java\Business"/>
+			<item value="F:\Event Booking Final\Event-Booking-Java\Event Booking Java\Booking"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>
