@@ -1,0 +1,79 @@
+package com.feuji.business.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.feuji.business.dto.BusinessDTO;
+import com.feuji.business.entity.Business;
+import com.feuji.business.entity.City;
+import com.feuji.business.entity.State;
+import com.feuji.business.service.BusinessService;
+
+@RestController
+@RequestMapping("business")
+@CrossOrigin
+public class BusinessController 
+{
+	@Autowired
+	private BusinessService businessService;
+	
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public BusinessDTO save(@RequestBody BusinessDTO  businessDTO)
+	{
+		return businessService.save(businessDTO);
+	}
+	
+	@GetMapping("/businesses")
+	public List<Business> getAll()
+	{
+		return businessService.getAll();
+	}
+
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public void update(@RequestBody BusinessDTO businessDTO)
+	{
+		businessService.save(businessDTO);
+	}
+	
+	@DeleteMapping("{businessId}")
+	public void delete(@PathVariable(value = "businessId") int businessId)
+	{
+		businessService.delete(businessId);
+	}
+	
+	//get all the states list
+	@GetMapping("/states")
+	public List<State> getStates()
+	{
+		return businessService.getStates();
+	}
+	
+	@GetMapping("/city")
+	public List<City> getCity()
+	{
+		return businessService.getCity();
+	}
+	
+	@GetMapping("/getbusiness")
+	public List<BusinessDTO> getBusiness()
+	{
+		return businessService.getBusiness();
+	}
+	
+	@GetMapping("/get/{registerId}")
+	public BusinessDTO get(@PathVariable ( "registerId") int registerId)
+	{
+		return businessService.get(registerId);
+	}
+}

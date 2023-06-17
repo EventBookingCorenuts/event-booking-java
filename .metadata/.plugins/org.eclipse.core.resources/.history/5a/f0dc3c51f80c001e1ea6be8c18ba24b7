@@ -1,0 +1,38 @@
+package com.feuji.registration;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.feuji.registration.controller.RegistrationController;
+import com.feuji.registration.entity.Registration;
+import com.feuji.registration.entity.Role;
+import com.feuji.registration.service.RegistrationService;
+
+@SpringBootTest(classes = {RegistrationControllerTest.class})
+public class RegistrationControllerTest 
+{
+	@Mock
+	private RegistrationService registrationService;
+	
+	@InjectMocks
+	private RegistrationController registrationController;
+	
+	// ------------------------------------ Mock Data ------------------------------------ //
+	Registration registration1=new Registration(1, "eventbooking@gmail.com", "Event@123", "false", 3, 9865743245.0, null);
+	Registration registration2=new Registration(2, "priya@gmail.com", "Priya@123", "false", 1, 7778891523.0, "true");
+	Registration registration3=new Registration(3, "sam@gmail.com", "Sam@1234", "false", 1, 7869504894.0, "true");
+	Registration registration4=new Registration(4, "mukesh@gmail.com", "Mukesh@123", "false", 2, 0.0, "false");
+	Registration registration5=new Registration(5, "fakki@gamil.com", "Fakki@123", "true", 2, 0.0, null);
+	Optional<Registration> registration6=Optional.of(new Registration(6, "borrajumukesh@gmail.com", "Borraju@123", "false", 1, 6758906546.0, "false"));
+		
+	List<Registration> registrations=Arrays.asList(registration1,registration2,registration3,registration4,registration5,registration6.get());
+		
+	List<Role> roles=Arrays.asList(new Role(1,"Admin"),new Role(2,"User"),new Role(3,"Admin"));
+		
+	List<Registration> requests=Arrays.asList(registration5);
+}
