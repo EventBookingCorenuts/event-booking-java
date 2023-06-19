@@ -12,6 +12,10 @@ import com.feuji.registration.repository.RegistrationRepository;
 import com.feuji.registration.repository.RoleRepository;
 import com.feuji.registration.service.RegistrationService;
 
+/**
+ * @author Event Booking Team
+ * RegistrationServiceIMPL-->All the implementation of abstract methods of the api calls
+ */
 @Service
 public class RegistrationServiceIMPL implements RegistrationService
 {
@@ -21,6 +25,7 @@ public class RegistrationServiceIMPL implements RegistrationService
 	@Autowired 
 	private RoleRepository roleRepository;
 
+	//add the new registration
 	@Override
 	public Registration save(Registration registration)
 	{
@@ -35,6 +40,7 @@ public class RegistrationServiceIMPL implements RegistrationService
 		return registrationRepository.save(registration);
 	}
 
+	//get all the planner data
 	@Override
 	public List<Registration> getAll() 
 	{
@@ -49,52 +55,54 @@ public class RegistrationServiceIMPL implements RegistrationService
 		return registrations2;
 	}
 
+	//update the user information
 	@Override
 	public Registration update(Registration registration) 
 	{
+		if("true".equals(registration.getActive()))
+		{	
+			registration.setActive("Active");
+		}
+		if("false".equals(registration.getActive()))
+		{	
+			registration.setActive("Inactive");
+		}
 		return registrationRepository.save(registration);
 	}
 
-	@Override
-	public void delete(int registerId)
-	{
-		registrationRepository.deleteById(registerId);
-	}
-
+	//get the user data based on email
 	@Override
 	public Registration findByEmail(String email) 
 	{
 		return registrationRepository.findByEmail(email);
 	}
 
+	//get the user data based on email and password
 	@Override
 	public Registration findByEmailAndPassword(String email,String password) 
 	{
 		return registrationRepository.findByEmailAndPassword(email,password);
 	}
 
+	//get all the roles of user
 	@Override
 	public List<Role> getRoles() 
 	{
 		return roleRepository.findAll();
 	}
 
+	//get the user records who send the request of planner registration
 	@Override
 	public List<Registration> getRequest()
 	{
 		return registrationRepository.findByStatus();
 	}
 
+	//the the all the planner based on their id
 	@Override
 	public Registration getPlanner(int plannerId)
 	{
 		return registrationRepository.findById(plannerId).get();
-	}
-	
-	@Override
-	public List<Registration> getPlanner()
-	{
-		return registrationRepository.findByRoleId();
 	}
 	
 }

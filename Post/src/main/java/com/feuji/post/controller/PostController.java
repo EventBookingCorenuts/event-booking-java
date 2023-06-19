@@ -70,6 +70,7 @@ public class PostController
 		postSevice.delete(postId);
 	}
 	
+	//get the business
 	@GetMapping("/business")
 	public BusinessDTO getBusiness()
 	{
