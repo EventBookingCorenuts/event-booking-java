@@ -25,7 +25,6 @@ import lombok.Setter;
 @NamedQuery(name="Registration.findByEmail",query = "select r from Registration as r where r.email=:email")
 @NamedQuery(name = "Registration.findByEmailAndPassword",query = "select r from Registration as r where r.email=:email and password=:password")
 @NamedQuery(name = "Registration.findByStatus",query = "select r from  Registration as r where r.status='true'")
-@NamedQuery(name = "Registration.findByRoleId",query = "select r from  Registration as r where r.roleId=1")
 public class Registration 
 {
 	@Id

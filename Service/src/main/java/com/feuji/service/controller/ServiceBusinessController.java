@@ -30,12 +30,14 @@ public class ServiceBusinessController
 	@Autowired
 	private ServiceBusinessService serviceBusinessService;
 	
+	//add service
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ServiceBusinessDTO save(@RequestBody ServiceBusinessDTO serviceBusinessDTO)
 	{
 		return serviceBusinessService.save(serviceBusinessDTO);
 	}
 	
+	//get all the services with registration and all rest template
 	@GetMapping()
 	public ResponseEntity<Map<String,List<?>>> getAll()
 	{
@@ -48,12 +50,14 @@ public class ServiceBusinessController
 		serviceBusinessService.update(serviceBusinessDTO);
 	}
 	
+	//delete the service based on serviceId
 	@DeleteMapping("{serviceBusinessId}")
 	public ServiceBusinessDTO delete(@PathVariable(value = "serviceBusinessId") int serviceBusinessId)
 	{
 		return serviceBusinessService.delete(serviceBusinessId);
 	}
 	
+	//get all services
 	@GetMapping("/getservices")
 	public List<Service> getServices()
 	{
@@ -66,6 +70,7 @@ public class ServiceBusinessController
 		return serviceBusinessService.getServiceBusiness(businessId);
 	}
 	
+	//get all the facilities
 	@GetMapping("/facilities")
 	public List<FacilityDTO> getFacilities()
 	{

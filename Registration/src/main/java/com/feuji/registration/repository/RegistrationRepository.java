@@ -8,17 +8,22 @@ import org.springframework.stereotype.Repository;
 
 import com.feuji.registration.entity.Registration;
 
+/**
+ * @author Event Booking Team
+ * RegistrationRepository-->Repository for the Registration database operation
+ */
 @Repository
 @EnableJpaRepositories
 public interface RegistrationRepository extends JpaRepository<Registration, Integer>
 {
 
+	//get the user data based on email
 	Registration findByEmail(String email);
 
+	//get the user data based on email and password
 	Registration findByEmailAndPassword(String email, String password);
 
+	//get the user records who send the request of planner registration
 	List<Registration> findByStatus();
 	
-	List<Registration> findByRoleId();
-
 }
